@@ -1,3 +1,25 @@
+from flask import Flask, request, render_template_string
+
+app = Flask(__name__)
+HTML_PAGE = """
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Message</title>
+</head>
+<body style="text-align:center; font-family:sans-serif; margin-top:100px; padding:20px;">
+  <h2>💌 Apnar Jonno Ekti Special Message</h2>
+  <form method="POST">
+    <input type="text" name="user_name" placeholder="Apnar nam ba entry likhun..." required style="padding:10px; font-size:16px; border-radius:5px; border:1px solid #ccc;">
+    <button type="submit" style="padding:10px 20px; font-size:16px; background-color:#28a745; color:white; border:none; border-radius:5px; cursor:pointer;">Submit</button>
+  </form>
+  {% if message %}
+    <h3 style="color:blue; margin-top:25px; line-height: 1.5;">{{ message | safe }}</h3>
+  {% endif %}
+</body>
+</html>
+"""
 name = input("enter your name: ")
 
 if name == "jim":
